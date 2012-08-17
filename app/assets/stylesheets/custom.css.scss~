@@ -164,6 +164,18 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }
 
 /* miscellaneous */
 
@@ -174,3 +186,21 @@ input, textarea, select, .uneditable-input {
   margin-top: 45px;
   @include box_sizing;
 }
+
+
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
