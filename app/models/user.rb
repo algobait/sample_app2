@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 attr_accessible :email, :name, :password, :password_confirmation
   
   has_secure_password
+  has_many :microposts, dependent: :destroy
   
   #before_save { |user| user.email = email.downcase }
   before_save { self.email.downcase! }
@@ -26,6 +27,10 @@ attr_accessible :email, :name, :password, :password_confirmation
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
+  def feed
+    # This is preliminary. see "following users" for full implementation
+    Micropost.where("user_id = ?", id)
+  end
   
   private
   
